@@ -1,0 +1,9 @@
+$color:red;
+.cont {
+    .top {
+      color: #FF9302;
+    }
+    .bottom {
+      color: $color;
+    }
+  }

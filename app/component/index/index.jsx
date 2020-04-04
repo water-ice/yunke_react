@@ -1,0 +1,10 @@
+import React from 'react';
+import '../../public/css/main.scss';
+import '../../public/css/index.scss';
+import Common from '../common/common'
+
+const Index = () =>
+    <Common title="首页"/>
+;
+
+export default Index;

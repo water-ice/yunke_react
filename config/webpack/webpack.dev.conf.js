@@ -11,7 +11,7 @@ let config = merge(baseWebpackConfig, {
     output: {
         path: path.resolve(webpackFile.devDirectory),
         filename:'js/[name].js',
-        chunkFilename:"js/[name].js",
+        chunkFilename: "js/[name]-[id].js",
         publicPath:''
     },
     plugins: [
@@ -22,7 +22,10 @@ let config = merge(baseWebpackConfig, {
         rules: [
             {
                 test:/\.(js|jsx)$/,
-                use: ['babel-loader',],
+                use: [
+                    'cache-loader',
+                    'babel-loader',
+                ],
                 include: [
                     path.resolve(__dirname, "../../app"),
                     path.resolve(__dirname, "../../entryBuild")
@@ -30,6 +33,27 @@ let config = merge(baseWebpackConfig, {
                 exclude: [
                     path.resolve(__dirname, "../../node_modules")
                 ],
+            },
+            {
+                test:/\.(css|scss)$/,
+                use: [
+                    {
+                      loader: "style-loader" // 将 JS 字符串生成为 style 节点
+                    },
+                    {
+                      loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
+                    },
+                    {
+                      loader: "sass-loader" // 将 Sass 编译成 CSS
+                    }
+                ],
+                exclude: [
+                    path.resolve(__dirname, "../../node_modules")
+                ],
+            },
+            {
+                test: /\.(png|jpg|gif|ttf|eot|woff|woff2|svg|swf)$/,
+                loader: 'file-loader?name=[name].[ext]&outputPath=' + webpackFile.resource + '/',
             }
         ]
     },

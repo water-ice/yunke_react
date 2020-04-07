@@ -1,11 +1,8 @@
-const json = require('../../package.json');//引进package.json
-const newEntry = {
-    'index':'./entryBuild/index.js',
-    'teacher':'./entryBuild/teacher.js'
-};
-
-newEntry.vendor = Object.keys(json.dependencies); //把 package.json dependencies字段的值放进 vendor中
-
+const entry = require("./webpack.entry.conf");
+const newEntry = {};
+for (let name in entry) {
+    newEntry[name] = entry[name][0]
+}
 let config = {
     entry: newEntry,
     resolve: {

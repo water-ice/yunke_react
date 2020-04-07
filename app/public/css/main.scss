@@ -2,6 +2,8 @@ $color:red;
 .cont {
     .top {
       color: #FF9302;
+      background: url(../img/1.png) no-repeat;
+      height:200px
     }
     .bottom {
       color: $color;

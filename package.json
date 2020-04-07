@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --devtool eval --progress --colors --profile --config config/webpack/webpack.dev.conf.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "entry": "node config/entry/entryBuild.js",
+    "devBuildHtml": "node config/webpack/webpack.devBuildHtml.conf.js",
+    "devNew": "npm run entry && npm run devBuildHtml",
+    "p": "set BABEL_ENV=production && webpack --progress --colors --config config/webpack/webpack.prod.conf.js"
   },
   "author": "liangchangqing",
   "license": "ISC",
@@ -18,8 +22,15 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "cache-loader": "^4.1.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^3.4.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file": "^0.2.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^3.1.0",
     "node-sass": "^4.9.2",
+    "optimize-css-assets-webpack-plugin": "^4.0.0",
     "sass-loader": "^7.3.1",
     "style-loader": "^1.1.3",
     "url-loader": "^4.0.0",

@@ -9,7 +9,7 @@
     "entry": "node config/entry/entryBuild.js",
     "devBuildHtml": "node config/webpack/webpack.devBuildHtml.conf.js",
     "devNew": "npm run entry && npm run devBuildHtml",
-    "p": "set BABEL_ENV=production && webpack --progress --colors --config config/webpack/webpack.prod.conf.js"
+    "p": "export BABEL_ENV=production && webpack --progress --colors --config config/webpack/webpack.prod.conf.js"
   },
   "author": "liangchangqing",
   "license": "ISC",
